@@ -92,4 +92,17 @@ describe "Items API" do
     expect(merchant[:data][:attributes][:name]).to eq(merchant1.name)
 
   end
+
+  describe "sad path & edge cases" do
+    it "sad path, bad integer id returns 404" do
+      item_id = 8923987297
+
+      get "/api/v1/items/#{item_id}"
+
+      expect(response).to_not be_successful
+      expect(response.status).to eq(404)
+
+      expect{Item.find(item_id)}.to raise_error(ActiveRecord::RecordNotFound)
+    end
+  end
 end
