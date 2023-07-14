@@ -45,4 +45,15 @@ describe "Merchants API" do
 
     expect(response).to be_successful
   end
+  it 'returns 400 or 404 for a bad merchant ID' do
+
+    get "/api/v1/merchants/99999/items"
+
+    expect(response).to have_http_status(:not_found).or have_http_status(:bad_request)
+
+    data = JSON.parse(response.body, symbolize_names: true)
+
+    expect(data).to have_key(:error)
+    expect(data[:error]).to eq("Merchant not found")
+  end
 end
