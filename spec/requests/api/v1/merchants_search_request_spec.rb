@@ -32,7 +32,6 @@ RSpec.describe 'merchant search requests' do
       get "/api/v1/merchants/find_all?name=#{"name"}"
 
       merchant_json = JSON.parse(response.body, symbolize_names: true)
-require 'pry'; binding.pry
       expect(response).to be_successful
       expect(merchant_json[:data]).to be_a(Array)
       expect(merchant_json[:data].empty?).to be(true)

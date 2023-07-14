@@ -23,4 +23,4 @@ class Api::V1::Items::SearchController < ApplicationController
       end
     end
   end
-en
+end
