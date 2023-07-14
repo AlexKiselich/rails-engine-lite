@@ -9,7 +9,7 @@ RSpec.describe Merchant, type: :model do
     merchant2 = Merchant.create!(name: "Alex's Spot")
     merchant3 = Merchant.create!(name: "Ben's Spot")
 
-    expect(Merchant.find__all_by_name(fragment)).to eq([merchant1,merchant2])
+    expect(Merchant.find_all_by_name(fragment)).to eq([merchant1,merchant2])
     end
   end
  end
